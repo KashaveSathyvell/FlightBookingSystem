@@ -28,8 +28,8 @@ function ListCustomers() {
             <tbody>
                 {
                     customers.map(customer =>
-                        <tr key={customer.id}>
-                            <td>{customer.id}</td>
+                        <tr key={customer.customerId}>
+                            <td>{customer.customerId}</td>
                             <td>{customer.firstName}</td>
                             <td>{customer.lastName}</td>
                             <td>{customer.email}</td>

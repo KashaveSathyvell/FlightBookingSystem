@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     //Build update Customer REST API
-    @PostMapping("{id}")
+    @PutMapping("{id}")
     public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable("id") Long customerId, @RequestBody CustomerDTO updatedCustomer){
         CustomerDTO customerDTO = customerService.updateCustomer(customerId, updatedCustomer);
         return ResponseEntity.ok(customerDTO);
