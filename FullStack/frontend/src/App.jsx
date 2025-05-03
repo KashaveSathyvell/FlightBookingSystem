@@ -18,6 +18,8 @@ function App() {
         <Route path='/customers' element = { <ListCustomers />}></Route>
         {/* http://localhost:3000/add-customer */}
         <Route path='/add-customer' element = { <CustomerComp />}></Route>
+        {/* http://localhost:3000/update-customer/1 */}
+        <Route path='/update-customer/:customerId' element = { <CustomerComp />}></Route>
       </Routes>
       <FooterComp />
     </BrowserRouter>

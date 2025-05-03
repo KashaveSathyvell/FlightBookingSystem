@@ -19,6 +19,10 @@ function ListCustomers() {
         navigator('/add-customer')
     }
 
+    function updateCustomer(customerId) {
+        navigator(`/update-customer/${customerId}`)
+    }
+
     return (
         <div className='container'>
             <h2 className='text-center'> List of Customers </h2>
@@ -30,6 +34,7 @@ function ListCustomers() {
                         <th>Customer First Name</th>
                         <th>Customer Last Name</th>
                         <th>Customer Email</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -40,6 +45,9 @@ function ListCustomers() {
                                 <td>{customer.firstName}</td>
                                 <td>{customer.lastName}</td>
                                 <td>{customer.email}</td>
+                                <td>
+                                    <button className='btn btn-info' onClick={()=> updateCustomer(customer.customerId)}>Update</button>
+                                </td>
                             </tr>
                         )
                     }
