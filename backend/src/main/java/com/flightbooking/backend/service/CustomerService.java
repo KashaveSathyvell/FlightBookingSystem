@@ -14,4 +14,6 @@ public interface CustomerService {
     CustomerDTO updateCustomer(Long customerId, CustomerDTO updatedCustomer);
 
     void deleteCustomer(Long employeeId);
+
+    CustomerDTO getCustomerLogin(String email, String password);
 }

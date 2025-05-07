@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -54,5 +55,15 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = customerRepository.findById(customerId).orElseThrow(()-> new ResourceNotFoundException("Customer does not exist with the given ID: " + customerId));
 
         customerRepository.deleteById(customerId);
+    }
+
+    @Override
+    public CustomerDTO getCustomerLogin(String email, String password) {
+        Customer customer = customerRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException("Incorrect Credentials. Please try again."));
+
+        if (!(Objects.equals(customer.getPassword(), password))){
+            new ResourceNotFoundException("Incorrect Credentials. Please try again.");
+        }
+        return CustomerMapper.mapToCustomerDTO(customer);
     }
 }

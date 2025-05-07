@@ -10,7 +10,8 @@ public class CustomerMapper {
                 customer.getCustomerId(),
                 customer.getFirstName(),
                 customer.getLastName(),
-                customer.getEmail()
+                customer.getEmail(),
+                customer.getPassword()
         );
     }
 
@@ -19,7 +20,8 @@ public class CustomerMapper {
                 customerDTO.getCustomerId(),
                 customerDTO.getFirstName(),
                 customerDTO.getLastName(),
-                customerDTO.getEmail()
+                customerDTO.getEmail(),
+                customerDTO.getPassword()
         );
     }
 }

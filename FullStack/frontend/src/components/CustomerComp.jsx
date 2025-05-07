@@ -1,17 +1,19 @@
 import React, {useState, useEffect} from 'react'
-import { createCustomer, getCustomer } from '../services/CustomerServices';
+import { createCustomer, getCustomer, updateCustomer, deleteCustomer } from '../services/CustomerServices';
 import { useNavigate, useParams } from 'react-router-dom';
 
 function CustomerComp() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
 
   const {customerId} = useParams();
   const [errors, setErrors] = useState({
     firstName: '',
     lastName: '',
-    email: ''
+    email: '',
+    password: ''
   })
  
   const navigator = useNavigate();
@@ -28,17 +30,29 @@ function CustomerComp() {
     }
   }, [customerId])
 
-  function saveCustomer(event) {
+  function saveUpdateCustomer(event) {
     event.preventDefault();
+    
+    const customer = {firstName, lastName, email, password}
+    console.log(customer) 
 
     if (validateForm()) {
-      const customer = {firstName, lastName, email}
-      console.log(customer) 
-
-      createCustomer(customer).then((response) => {
+      if(customerId) {
+        updateCustomer(customerId, customer).then((response) => {
+          console.log(response.data);
+          navigator('/customers')
+        }).catch(error => {
+          console.error(error);
+        })
+      }
+      else {
+        createCustomer(customer).then((response) => {
         console.log(response.data);
-        navigator('/customers')
+        navigator('/')
+      }).catch((error) => {
+        console.error(error);
       })
+      }      
     }
   }
 
@@ -69,6 +83,15 @@ function CustomerComp() {
       errorsCopy.email = 'Email is required'
       valid = false;
     }
+
+    if(password.trim()) {
+      errorsCopy.password = ''
+    }
+    else {
+      errorsCopy.password = 'Password is required'
+      valid = false;
+    }
+
     setErrors(errorsCopy);
     return valid;
   }
@@ -127,7 +150,20 @@ function CustomerComp() {
                 </input>
                 {errors.email && <div className='invalid-feedback'>{errors.email}</div>}
               </div>
-              <button className='btn btn-success' onClick={saveCustomer}>Submit</button>
+
+              <div className='form-group mb-2'>
+                <label className='form-label'>Password:</label>
+                <input type='password' 
+                  placeholder='Enter Password' 
+                  name='password' 
+                  value={password} 
+                  className={`form-control ${errors.password ? 'is-invalid' : ''}`} 
+                  onChange={(event) => setPassword(event.target.value)}>
+                </input>
+                {errors.password && <div className='invalid-feedback'>{errors.password}</div>}
+              </div>
+
+              <button className='btn btn-success' onClick={saveUpdateCustomer}>Submit</button>
             </form>
           </div>
 

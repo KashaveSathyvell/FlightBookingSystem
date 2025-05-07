@@ -24,4 +24,6 @@ public class Customer {
     private String lastName;
     @Column(name = "email_id", nullable = false, unique = true)
     private String email;
+    @Column(name = "password", nullable = false, unique = true)
+    private String password;
 }

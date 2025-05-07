@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { getListCustomers } from '../services/CustomerServices'
+import { deleteCustomer, getListCustomers } from '../services/CustomerServices'
 import { useNavigate } from 'react-router-dom'
 
 function ListCustomers() {
@@ -8,12 +8,16 @@ function ListCustomers() {
     const navigator = useNavigate();
 
     useEffect(() => {
+        getAllCustomers();
+    }, [])
+
+    function getAllCustomers() {
         getListCustomers().then((response) => {
             setCustomer(response.data);
         }).catch(error => {
             console.error(error);
         })
-    }, [])
+    }
 
     function addNewCustomer() {
         navigator('/add-customer')
@@ -21,6 +25,16 @@ function ListCustomers() {
 
     function updateCustomer(customerId) {
         navigator(`/update-customer/${customerId}`)
+    }
+
+    function removeCustomer(customerId) {
+        console.log(customerId)
+
+        deleteCustomer(customerId).then((response)=>{
+            getAllCustomers();        
+        }).catch(error => {
+            console.error(error);
+        })
     }
 
     return (
@@ -47,6 +61,7 @@ function ListCustomers() {
                                 <td>{customer.email}</td>
                                 <td>
                                     <button className='btn btn-info' onClick={()=> updateCustomer(customer.customerId)}>Update</button>
+                                    <button className='btn btn-danger' onClickCapture={()=> removeCustomer(customer.customerId)} style={{marginLeft: '10px'}}>Delete</button>
                                 </td>
                             </tr>
                         )
