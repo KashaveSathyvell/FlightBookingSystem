@@ -13,4 +13,5 @@ export const updateCustomer = (customerID, customer) => axios.put(REST_API_BASE_
 export const deleteCustomer = (customerID, customer) => axios.delete(REST_API_BASE_URL + '/' + customerID);
 
 export const customerLogin = (email, password) => axios.post(REST_API_BASE_URL + '/login', { email, password });
-  
+
+export const customerDashboard = (customerID) => axios.get(REST_API_BASE_URL + '/dashboard/' + customerID);
