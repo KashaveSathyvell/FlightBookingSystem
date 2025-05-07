@@ -5,7 +5,7 @@ export const HeaderComp = () => {
     <div>
         <header>
             <nav className="navbar navbar-dark bg-dark justify-content-center">
-                <a className ="navbar-brand" href="#" >Customer Management App</a>
+                <a className ="navbar-brand" href="#" >Flight Booking System</a>
             </nav>
         </header>
     </div>

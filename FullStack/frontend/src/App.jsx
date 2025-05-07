@@ -1,4 +1,5 @@
 import './App.css'
+import HomePage from './components/HomePage'
 import ListCustomers from './components/ListCustomers'
 import HeaderComp from './components/HeaderComp'
 import FooterComp from './components/FooterComp'
@@ -13,7 +14,9 @@ function App() {
       <HeaderComp />
       <Routes>
         {/* http://localhost:3000 */}
-        <Route path='/' element = { <ListCustomers />}></Route>
+        <Route path='/' element = { <HomePage />}></Route>
+        {/* http://localhost:3000/login */}
+        {/* <Route path='/login' element = { <ListCustomers />}></Route> */}
         {/* http://localhost:3000/customers */}
         <Route path='/customers' element = { <ListCustomers />}></Route>
         {/* http://localhost:3000/add-customer */}

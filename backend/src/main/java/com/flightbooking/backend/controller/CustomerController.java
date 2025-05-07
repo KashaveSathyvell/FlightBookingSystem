@@ -30,7 +30,6 @@ public class CustomerController {
         return ResponseEntity.ok(customerDTO);
     }
 
-
     //Build Get All Customers REST API
     @GetMapping
     public ResponseEntity<List<CustomerDTO>> getAllCustomers() {
@@ -52,4 +51,15 @@ public class CustomerController {
         return ResponseEntity.ok("Customer deleted successfully!");
     }
 
+    //Build Get Login Credentials API
+    @PostMapping("/login")
+    public ResponseEntity<CustomerDTO> CustomerLogin(@RequestBody CustomerDTO loginDTO) {
+        CustomerDTO customer = customerService.getCustomerLogin(loginDTO.getEmail(), loginDTO.getPassword());
+        System.out.println("CUSTOMER   :  " + customer);
+        if (customer == null) {
+            // invalid credentials
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return ResponseEntity.ok(customer);
+    }
 }
