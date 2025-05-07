@@ -50,8 +50,9 @@ function HomePage() {
                 console.log("Login response:", response.data);
                 
                 if(response.data) {
+                    const ID = response.data.customerId;
                     console.log("Login successful");
-                    navigator('/customers')
+                    navigator(`/dashboard/${ID}`)
                 } else {
                     setError({apiError: 'Issue with Server'});
                 }
