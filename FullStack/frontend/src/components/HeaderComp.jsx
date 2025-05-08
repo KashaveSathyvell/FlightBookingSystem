@@ -1,5 +1,6 @@
 import React from 'react'
 
+//function for header in app for all pages
 export const HeaderComp = () => {
   return (
     <div>

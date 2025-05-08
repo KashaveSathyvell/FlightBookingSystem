@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { customerLogin, createCustomer } from '../services/CustomerServices';
-import CustomerComp from './CustomerComp';
-// import buttonCenter from '../App.css'
+import { customerLogin } from '../services/CustomerServices';
 
 function HomePage() {
     const [email, setEmail] = useState('');
@@ -11,15 +9,18 @@ function HomePage() {
 
     const navigator = useNavigate();
 
+    // function to go to customer dashboard url
     function ShowCustomers() {
         navigator('/customers')
     }
 
+    //function to go to add customer/sign up url page
     function SignUp(event) {
         event.preventDefault();
         navigator('/add-customer');
     }
 
+    //function to ensure all fields are filled and valid. display error message if not
     function validateForm() {
         let valid = true;
         const errorsCopy = {};
@@ -42,6 +43,7 @@ function HomePage() {
         return valid;
     }
 
+    //function to login user and directs to dashboard
     function Login(event) {
         event.preventDefault();
 
@@ -101,11 +103,10 @@ function HomePage() {
             </form>
         </div>
 
-        
-
         <div className='VerticalCenter'>
             <button className='btn btn-primary mb-2' onClick={ShowCustomers} style={{marginTop: '20px'}}>List Customers</button>
         </div>
+
     </div>
   )
 }

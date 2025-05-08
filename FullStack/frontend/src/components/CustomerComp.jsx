@@ -30,6 +30,7 @@ function CustomerComp() {
     }
   }, [customerId])
 
+  //function take user to sign up pge, or to update customer page
   function saveUpdateCustomer(event) {
     event.preventDefault();
     
@@ -37,7 +38,7 @@ function CustomerComp() {
     console.log(customer) 
 
     if (validateForm()) {
-      if(customerId) {
+      if(customerId) {  //if customer id is in the url, then takes user yo update customer page
         updateCustomer(customerId, customer).then((response) => {
           console.log(response.data);
           navigator('/customers')
@@ -45,7 +46,7 @@ function CustomerComp() {
           console.error(error);
         })
       }
-      else {
+      else { //else if no id in url, thakes user to sign up page
         createCustomer(customer).then((response) => {
         console.log(response.data);
         navigator('/')
@@ -56,6 +57,7 @@ function CustomerComp() {
     }
   }
 
+  //ensures that all fields are valid and notr empty. If nogt displays an error message.
   function validateForm() {
     let valid = true;
     const errorsCopy = {... errors};
@@ -96,6 +98,8 @@ function CustomerComp() {
     return valid;
   }
 
+  //function that will display the title of page depending on either update or sign up
+  // allowss users to know what page they aare in 
   function pageTitle() {
     if(customerId) {
       return <h2 className='text-center'>Update Customer</h2>
