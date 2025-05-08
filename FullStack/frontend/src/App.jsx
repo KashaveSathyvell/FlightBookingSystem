@@ -13,6 +13,8 @@ function App() {
     <>
     <BrowserRouter>
       <HeaderComp />
+      {/*setting up routes for the app for each page url*/}
+      
       <Routes>
         {/* http://localhost:3000 */}
         <Route path='/' element = { <HomePage />}></Route>

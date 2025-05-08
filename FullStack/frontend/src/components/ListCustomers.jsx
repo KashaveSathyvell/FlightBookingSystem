@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { deleteCustomer, getListCustomers } from '../services/CustomerServices'
 import { useNavigate } from 'react-router-dom'
 
-function ListCustomers() {
+function ListCustomers() { //function to display all customers registered in the system ina table
 
     const [customers, setCustomer] = useState([])
     const navigator = useNavigate();
@@ -27,6 +27,7 @@ function ListCustomers() {
         navigator(`/update-customer/${customerId}`)
     }
 
+    //funtion to delete customer from system/database
     function removeCustomer(customerId) {
         console.log(customerId)
 
@@ -53,6 +54,7 @@ function ListCustomers() {
                 </thead>
                 <tbody>
                     {
+                        //mapping customers to table rows suing the id as key thanks to map func
                         customers.map(customer =>
                             <tr key={customer.customerId}>
                                 <td>{customer.customerId}</td>
