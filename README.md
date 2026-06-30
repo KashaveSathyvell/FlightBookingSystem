@@ -1,4 +1,4 @@
-#Flight Booking System
+# Flight Booking System
 
 > 🚧 **Work in progress.** Customer management is implemented; flight search and booking functionality is the next milestone.
 
