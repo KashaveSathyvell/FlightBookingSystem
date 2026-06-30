@@ -1,12 +1,15 @@
-# Flight Booking System
+markdown# Flight Booking System
 
-A full-stack web application with a Spring Boot backend and a React (Vite) frontend, built around customer record management with CRUD functionality.
+> 🚧 **Work in progress.** Customer management is implemented; flight search and booking functionality is the next milestone.
+
+A full-stack web application with a Spring Boot backend and a React (Vite) frontend, built around customer record management with CRUD functionality, with flight booking features actively in development.
 
 ## Overview
 
 The backend exposes a REST API for managing customer records, backed by Spring Data JPA and Hibernate for ORM mapping to the database. The frontend is a single-page application using `react-router-dom` for client-side routing, with views for listing customers, adding a new customer, updating an existing customer's details, and a per-customer dashboard.
 
-> Note: this README reflects the customer management functionality currently implemented. Flight and booking-specific features are part of the planned scope.
+**Currently implemented:** customer management (create, read, update, list, dashboard view)
+**Not yet implemented:** flight search, flight entities, and the booking flow itself
 
 ## Tech stack
 
