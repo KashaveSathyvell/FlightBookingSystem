@@ -1,6 +1,6 @@
 # Flight Booking System
 
-> 🚧 **Work in progress.** Customer management is implemented; flight search and booking functionality is the next milestone.
+> **Work in progress.** Customer management is implemented; flight search and booking functionality is the next milestone.
 
 A full-stack web application with a Spring Boot backend and a React (Vite) frontend, built around customer record management with CRUD functionality, with flight booking features actively in development.
 
